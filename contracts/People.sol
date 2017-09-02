@@ -33,13 +33,15 @@ contract People {
 
         for (uint i = 0; i < people.length; i++) {
             Person memory currentPerson;
-            currentPerson = people[1];
+            currentPerson = people[i];
 
             firstNames[i] = currentPerson.firstName;
             lastNames[i] = currentPerson.lastName;
             ages[i] = currentPerson.age;
 
         }
+
+        return (firstNames,lastNames,ages);
 
     }
 
