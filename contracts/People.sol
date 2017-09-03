@@ -49,4 +49,43 @@ contract People {
 
     }
 
+    function updatePerson (uint _id, bytes32 newFirstName, bytes32 newLastName, uint newAge) returns (uint) {
+
+        for (uint i = 0; i < people.length; i++){
+            Person memory updatedPerson;
+            updatedPerson = people[i];
+
+            if (updatedPerson.id == _id) {
+                updatedPerson.firstName = newFirstName;
+                updatedPerson.lastName = newLastName;
+                updatedPerson.age = newAge;
+                people[i] = updatedPerson;
+            }
+        }
+        return _id;
+
+    }
+
+    function dropPerson (uint id) returns (uint) {
+
+        uint length = people.length;
+
+        for (uint i = 0; i < length; i++){
+
+            Person memory currentPerson;
+            currentPerson = people[i];
+
+            if (currentPerson.id == id) {
+                delete people[i];
+
+                if (i < length-1) {
+                    people[i] = people[length-1];
+                }
+                people.length--;
+            }
+        }
+        return id;
+
+    }
+
 }
