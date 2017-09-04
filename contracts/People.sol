@@ -1,14 +1,14 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.11;
 
 contract People {
 
     Person[] public people;
 
     struct Person {
-        uint id;
-        bytes32 firstName;
-        bytes32 lastName;
-        uint age;
+    uint id;
+    bytes32 firstName;
+    bytes32 lastName;
+    uint age;
     }
 
 
@@ -68,9 +68,7 @@ contract People {
 
     function dropPerson (uint id) returns (uint) {
 
-        uint length = people.length;
-
-        for (uint i = 0; i < length; i++){
+        for (uint i = 0; i < people.length; i++){
 
             Person memory currentPerson;
             currentPerson = people[i];
@@ -78,8 +76,8 @@ contract People {
             if (currentPerson.id == id) {
                 delete people[i];
 
-                if (i < length-1) {
-                    people[i] = people[length-1];
+                if (i < people.length-1) {
+                    people[i] = people[people.length-1];
                 }
                 people.length--;
             }
